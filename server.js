@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import Fastify from "fastify";
 import userRoutes from "./src/routes/userRoutes.js";
 import dbConn from "./src/configs/dbConn.js"
@@ -8,10 +9,12 @@ const fastify = Fastify({
   logger: true,
 });
 
+const PORT = process.env.PORT
+
 fastify.register(userRoutes)
 fastify.register(dbConn)
 
-fastify.listen({port:3000}).then((address) => {
+fastify.listen({port: Number(PORT)}).then((address) => {
     console.log(`Server berjalan di ${address}`)
 }).catch((err) => {
     fastify.log.error(err)

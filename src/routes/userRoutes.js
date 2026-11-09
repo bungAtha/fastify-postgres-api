@@ -7,5 +7,5 @@ export default function userRoutes(fastify, options, done) {
   fastify.put('/users/:id', userController.updateUser)
   fastify.delete('/users/:id', userController.deleteUser)
   
-  done() // Memberitahu Fastify bahwa pendaftaran plugin/route selesai
+  done()
 }
